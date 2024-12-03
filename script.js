@@ -14,11 +14,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const patternSize = 5;
         const cellSize = canvas.width / size;
         const pattern = [];
+        
+        // Calculate middle for symmetry
+        const middleCol = Math.floor(patternSize / 2);
 
+        // Generate pattern with symmetry
         for (let i = 0; i < patternSize; i++) {
             pattern[i] = [];
-            for (let j = 0; j < patternSize; j++) {
+            // Only generate up to middle column
+            for (let j = 0; j <= middleCol; j++) {
                 pattern[i][j] = Math.random() > 0.5;
+                // Mirror the pattern for symmetry
+                if (j !== middleCol) { // Skip mirroring middle column
+                    pattern[i][patternSize - 1 - j] = pattern[i][j];
+                }
             }
         }
 
