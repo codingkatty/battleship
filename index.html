@@ -1,0 +1,36 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Battleship Game</title>
+    <style>
+        .board {
+            display: grid;
+            grid-template-columns: repeat(10, 40px);
+            gap: 2px;
+            margin: 20px;
+        }
+        .cell {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #333;
+            background: #80b3ff;
+            cursor: pointer;
+        }
+        .ship { background: #666; }
+        .hit { background: #ff4444; }
+        .miss { background: white; }
+    </style>
+</head>
+<body>
+    <div id="gameMode">
+        <button onclick="startSinglePlayer()">Single Player</button>
+        <button onclick="startMultiPlayer()">Multi Player</button>
+    </div>
+    <div id="boards" style="display: flex;">
+        <div id="playerBoard" class="board"></div>
+        <div id="enemyBoard" class="board"></div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>
