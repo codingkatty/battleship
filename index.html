@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Profile Pic</title>
+    <title>Profile Pic Generator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <h1>Profile Pic Generator</h1>
+    <canvas id="identicon" width="300" height="300"></canvas>
+    <div>
+        <label for="color">Choose Color:</label>
+        <input type="color" id="color" name="color" value="#000000">
+        <button id="generate">Generate</button>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
