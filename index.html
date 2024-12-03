@@ -1,17 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Profile Pic Generator</title>
-    <link rel="stylesheet" href="style.css">
+    <title>PFP Generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=New+Rocker&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Profile Pic Generator</h1>
-    <canvas id="identicon" width="300" height="300"></canvas>
-    <div>
-        <label for="color">Choose Color:</label>
-        <input type="color" id="color" name="color" value="#000000">
-        <button id="generate">Generate</button>
+    <div class="container">
+        <h1>🏴‍☠️ Pirate Identicon Generator 🏴‍☠️</h1>
+        <div class="canvas-container">
+            <canvas id="identicon" width="300" height="300"></canvas>
+        </div>
+        <div class="controls">
+            <div class="control-group">
+                <label for="color">Ink Color:</label>
+                <input type="color" id="color" name="color" value="#8B4513">
+            </div>
+            <div class="control-group">
+                <label for="bgColor">Parchment Color:</label>
+                <input type="color" id="bgColor" name="bgColor" value="#F5DEB3">
+            </div>
+            <button id="generate">Generate New Mark</button>
+            <button id="download">Save to Ship's Log</button>
+        </div>
     </div>
+
+    <img src="waveGif1.gif" class="wave-img" alt="">
+    <img src="waveGif2.gif" class="wave-img" alt="">
+    <img src="waveGif3.gif" class="wave-img" alt="">
+
     <script src="script.js"></script>
 </body>
 </html>
