@@ -1,0 +1,32 @@
+name: 🐛 Bug Report
+description: Report a bug or issue with the project.
+title: "[BUG]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Ahoy, matey! ⚓ Use this template to report a bug and help us improve the ship's sails.
+  - type: input
+    id: what_happened
+    attributes:
+      label: What went wrong?
+      description: Briefly describe the issue you encountered.
+      placeholder: The ship be takin' on water!
+  - type: textarea
+    id: steps_to_reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: List the steps we can take to reproduce the issue.
+      placeholder: 1. Hoist the sails\n2. Turn starboard\n3. Watch the compass spin wildly
+  - type: input
+    id: expected_behavior
+    attributes:
+      label: What did ye expect?
+      description: Describe what ye thought would happen instead.
+      placeholder: The compass should point north, not to Davy Jones' locker!
+  - type: textarea
+    id: additional_info
+    attributes:
+      label: Extra Details (if any)
+      description: Add any other helpful details, like device info, logs, or screenshots.
