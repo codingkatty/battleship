@@ -17,7 +17,7 @@ class Battleship {
         this.roomId = null;
         this.playerId = null;
         this.isMyTurn = false;
-        this.BACKEND_URL = 'wss://your-render-app.onrender.com'; // Change this to your Render URL
+        this.BACKEND_URL = 'https://battleship-0nbr.onrender.com'; // Change this to your Render URL
     }
 
     createBoard() {
