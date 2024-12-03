@@ -23,7 +23,7 @@ There are over one million patterns that could be generated. Cool ones include: 
 
 1. Clone the repo:
 ```bash
-git clone https://github.com/yourusername/pirate-identicon-generator.git 
+git clone https://github.com/codingkatty/profilepic.git 
 ```
 
 2. Open `index.html` in your browser
