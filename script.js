@@ -10,12 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
     bgColorInput.value = '#F5DEB3';
 
     function generateIdenticon(color, bgColor) {
-        const size = 7; // 6x6 grid
-        const patternSize = 5; // 5x5 pattern
+        const size = 7;
+        const patternSize = 5;
         const cellSize = canvas.width / size;
         const pattern = [];
 
-        // Generate a random pattern
         for (let i = 0; i < patternSize; i++) {
             pattern[i] = [];
             for (let j = 0; j < patternSize; j++) {
@@ -23,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Draw the pattern on the canvas
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.fillStyle = bgColor;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -49,6 +47,5 @@ document.addEventListener('DOMContentLoaded', () => {
         link.click();
     });
 
-    // Generate an initial Identicon
     generateIdenticon(colorInput.value, bgColorInput.value);
 });

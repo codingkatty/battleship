@@ -114,8 +114,8 @@ input[type="color"] {
 
 .wave-img {
     position: fixed;
-    width: 400px; /* Original width */
-    height: 200px; /* Original height */
+    width: 400px;
+    height: 200px;
     pointer-events: none;
     z-index: -1;
     opacity: 0;
@@ -131,13 +131,13 @@ input[type="color"] {
 .wave-img:nth-of-type(2) {
     top: 10%;
     right: 5%;
-    animation-delay: 2s; /* Increased delay */
+    animation-delay: 2s;
 }
 
 .wave-img:nth-of-type(3) {
     bottom: 15%;
     right: 10%;
-    animation-delay: 4s; /* Further increased delay */
+    animation-delay: 4s;
 }
 
 @media screen and (max-width: 768px) {
@@ -188,7 +188,6 @@ input[type="color"] {
     }
 }
 
-/* Even smaller screens */
 @media screen and (max-width: 480px) {
     h1 {
         font-size: 1.5em;
