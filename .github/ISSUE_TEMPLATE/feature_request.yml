@@ -1,0 +1,27 @@
+name: 🌟 Feature Request
+description: Suggest a new feature or improvement.
+title: "[FEATURE]: "
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Ahoy, sailor! 🏴‍☠️ Use this template to chart the course for new treasures and features.
+  - type: input
+    id: feature_summary
+    attributes:
+      label: What be yer idea?
+      description: Briefly describe the feature ye be requesting.
+      placeholder: A compass that always points to treasure!
+  - type: textarea
+    id: feature_details
+    attributes:
+      label: How will this improve the ship's journey?
+      description: Explain why this feature is valuable for ye and the crew.
+      placeholder: It'll help us find gold faster and avoid scurvy.
+  - type: textarea
+    id: implementation_ideas
+    attributes:
+      label: Any suggestions on how to build it?
+      description: Share any ideas ye have on how this could be done.
+      placeholder: Maybe use a magic spell or an AI parrot.
