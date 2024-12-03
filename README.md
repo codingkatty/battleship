@@ -15,7 +15,9 @@ Generate unique pirate-themed profile pictures inspired by GitHub's identicon sy
 - **Pirate Theme**: Styled with a fun pirate aesthetic 🏴‍☠️
 
 ## 💖 Examples
+There are over one million patterns that could be generated. Cool ones include: faces, skull, symbol, etc.
 
+<img src="https://i.imgur.com/HmUqbrG.png" width="180px" height="180px">  <img src="https://i.imgur.com/9tOKb55.png" width="180px" height="180px">  <img src="https://i.imgur.com/hNraLje.png" width="180px" height="180px">
 
 ## 🚀 Quick Start
 
