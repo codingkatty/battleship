@@ -70,14 +70,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const formData = new FormData();
     formData.append("file", blob, "identicon.png");
 
-    const response = await fetch("/upload", {
+    const response = await fetch("https://piratepicgen.onrender.com/upload", {
       method: "POST",
       body: formData,
     });
 
-    if (response.ok) {
-      alert("Image shared to gallery!");
-    } else {
+    if (!response.ok) {
       alert("Failed to share image.");
     }
   });

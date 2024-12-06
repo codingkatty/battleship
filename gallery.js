@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    const response = await fetch('/load');
+    const response = await fetch('https://piratepicgen.onrender.com/load');
     const urls = await response.json();
 
     const container = document.querySelector('.container');
