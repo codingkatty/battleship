@@ -81,17 +81,17 @@ app.get('/load', async (req, res) => {
         }
 
         const urls = data.map(file => {
-            const { publicURL, error } = supabase.storage
+            const { data: publicData, error: publicError } = supabase.storage
                 .from(bucketName)
                 .getPublicUrl(file.name);
 
-            if (error) {
-                console.error(`Error getting public URL for ${file.name}:`, error.message);
+            if (publicError) {
+                console.error(`Error getting public URL for ${file.name}:`, publicError.message);
                 return null;
             }
 
-            console.log(`Generated URL for ${file.name}: ${publicURL}`);
-            return publicURL;
+            console.log(`Generated URL for ${file.name}: ${publicData.publicUrl}`);
+            return publicData.publicUrl;
         });
 
         res.status(200).send(urls);
