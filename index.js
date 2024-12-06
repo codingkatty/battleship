@@ -5,6 +5,7 @@ const { createClient } = require('@supabase/supabase-js');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const fs = require('fs');
+const path = require('path');
 
 const app = express();
 app.use(cookieParser());
@@ -36,18 +37,25 @@ app.post('/upload', upload.single('file'), async (req, res) => {
         return res.status(400).send('No file uploaded.');
     }
 
-    const { data, error } = await supabase.storage
-        .from(bucketName)
-        .upload(file.filename, fs.createReadStream(file.path), {
-            cacheControl: '3600',
-            upsert: false
-        });
+    try {
+        const { data, error } = await supabase.storage
+            .from(bucketName)
+            .upload(file.filename, fs.createReadStream(file.path), {
+                cacheControl: '3600',
+                upsert: false
+            });
 
-    if (error) {
-        return res.status(500).send(error.message);
+        if (error) {
+            throw error;
+        }
+
+        fs.unlinkSync(file.path);
+
+        res.status(200).send({ path: data.Key });
+    } catch (error) {
+        console.error('Error uploading file:', error.message);
+        res.status(500).send(error.message);
     }
-
-    res.status(200).send({ path: data.Key });
 });
 
 app.get('/load', async (req, res) => {
@@ -67,7 +75,7 @@ app.get('/health', (req, res) => {
     res.status(200).send('OK');
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
