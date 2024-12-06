@@ -75,35 +75,36 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
-  document.getElementById("share").addEventListener("click", async () => {
-    const dataUrl = canvas.toDataURL("image/png");
-    const blob = await (await fetch(dataUrl)).blob();
-    const formData = new FormData();
+  document.getElementById("share").addEventListener("click", () => {
+    canvas.toBlob(async (blob) => {
+      if (!blob) {
+        alert("Failed to generate image blob.");
+        return;
+      }
 
-    const uuid = generateUUID();
-    const filename = `identicon-${uuid}.png`;
+      console.log("Blob Type:", blob.type);
 
-    formData.append("file", blob, filename);
+      const formData = new FormData();
+      const uuid = generateUUID();
+      const filename = `identicon-${uuid}.png`;
 
-    try {
-      const response = await axios.post(
-        "https://piratepicgen.onrender.com/upload",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
+      formData.append("file", blob, filename);
+
+      try {
+        const response = await axios.post(
+          "https://piratepicgen.onrender.com/upload",
+          formData
+        );
+
+        if (response.status === 200) {
+          alert("Image shared to gallery!");
+        } else {
+          alert(`Failed to share image. Status Code: ${response.status}`);
         }
-      );
-
-      if (response.status === 200) {
-        alert("Image shared to gallery!");
-      } else {
+      } catch (error) {
+        console.error("Error uploading file:", error);
         alert("Failed to share image.");
       }
-    } catch (error) {
-      console.error("Error uploading file:", error);
-      alert("Failed to share image.");
-    }
+    }, "image/png");
   });
 });
