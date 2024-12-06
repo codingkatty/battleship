@@ -11,7 +11,7 @@ const app = express();
 app.use(cookieParser());
 app.use(express.static('public'));
 
-const allowedOrigins = ['https://codingkatty.github.io'];
+const allowedOrigins = ['http://localhost:3000', 'https://codingkatty.github.io'];
 app.use(cors({
     origin: function (origin, callback) {
         if (!origin) return callback(null, true);
@@ -75,7 +75,7 @@ app.get('/health', (req, res) => {
     res.status(200).send('OK');
 });
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
