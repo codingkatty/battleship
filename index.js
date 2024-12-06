@@ -4,11 +4,23 @@ const multer = require('multer');
 const { createClient } = require('@supabase/supabase-js');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const fs = require('fs');
 
 const app = express();
 app.use(cookieParser());
 app.use(express.static('public'));
-app.use(cors());
+
+const allowedOrigins = ['https://codingkatty.github.io'];
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.indexOf(origin) === -1) {
+            const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+            return callback(new Error(msg), false);
+        }
+        return callback(null, true);
+    }
+}));
 
 const upload = multer({ dest: 'uploads/' });
 
