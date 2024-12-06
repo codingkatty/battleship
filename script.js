@@ -71,16 +71,20 @@ document.addEventListener("DOMContentLoaded", () => {
     formData.append("file", blob, "identicon.png");
 
     try {
-        const response = await axios.post("https://piratepicgen.onrender.com/upload", formData);
-
-        if (response.status === 200) {
-            alert("Image shared to gallery!");
-        } else {
-            alert("Failed to share image.");
+      const response = await axios.post("https://piratepicgen.onrender.com/upload", formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
         }
-    } catch (error) {
-        console.error("Error uploading file:", error);
+      });
+
+      if (response.status === 200) {
+        alert("Image shared to gallery!");
+      } else {
         alert("Failed to share image.");
+      }
+    } catch (error) {
+      console.error("Error uploading file:", error);
+      alert("Failed to share image.");
     }
   });
 });

@@ -15,11 +15,11 @@ const allowedOrigins = ['http://localhost:3000', 'https://codingkatty.github.io'
 app.use(cors({
     origin: function (origin, callback) {
         if (!origin) return callback(null, true);
-        if (allowedOrigins.indexOf(origin) === -1) {
-            const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
-            return callback(new Error(msg), false);
+        if (allowedOrigins.includes(origin)) {
+            return callback(null, true);
         }
-        return callback(null, true);
+        const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+        return callback(new Error(msg), false);
     }
 }));
 
@@ -38,9 +38,11 @@ app.post('/upload', upload.single('file'), async (req, res) => {
     }
 
     try {
+        const fileBuffer = fs.readFileSync(file.path);
+        
         const { data, error } = await supabase.storage
             .from(bucketName)
-            .upload(file.filename, fs.createReadStream(file.path), {
+            .upload(file.originalname, fileBuffer, {
                 cacheControl: '3600',
                 upsert: false
             });
@@ -51,7 +53,7 @@ app.post('/upload', upload.single('file'), async (req, res) => {
 
         fs.unlinkSync(file.path);
 
-        res.status(200).send({ path: data.Key });
+        res.status(200).send({ path: data.path });
     } catch (error) {
         console.error('Error uploading file:', error.message);
         res.status(500).send(error.message);
