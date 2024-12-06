@@ -4,10 +4,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const container = document.querySelector('.container');
     urls.forEach(url => {
-        const img = document.createElement('img');
-        img.src = url;
-        img.alt = 'Identicon';
-        img.classList.add('gallery-img');
-        container.appendChild(img);
+        if (url) {
+            const img = document.createElement('img');
+            img.src = url;
+            img.alt = 'Identicon';
+            img.classList.add('gallery-img');
+            container.appendChild(img);
+        }
     });
 });

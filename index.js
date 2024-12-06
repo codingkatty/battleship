@@ -34,6 +34,7 @@ app.post('/upload', upload.single('file'), async (req, res) => {
     const file = req.file;
 
     if (!file) {
+        console.error('No file uploaded.');
         return res.status(400).send('No file uploaded.');
     }
 
@@ -48,12 +49,15 @@ app.post('/upload', upload.single('file'), async (req, res) => {
             });
 
         if (error) {
+            console.error('Supabase upload error:', error.message);
             throw error;
         }
 
+        console.log('Uploaded file data:', data);
+
         fs.unlinkSync(file.path);
 
-        res.status(200).send({ path: data.path });
+        res.status(200).send({ path: data.Key });
     } catch (error) {
         console.error('Error uploading file:', error.message);
         res.status(500).send(error.message);
