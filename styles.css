@@ -13,6 +13,24 @@ body {
     padding: 20px;
 }
 
+.navbar {
+    background-color: var(--wood-dark);
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.navbar a {
+    color: var(--parchment);
+    text-decoration: none;
+    margin: 0 25px;
+    font-size: 1.7em;
+}
+
+.navbar a:hover {
+    color: var(--accent);
+}
+
 .container {
     background-color: rgba(245, 222, 179, 0.9);
     border-radius: 15px;
@@ -202,4 +220,12 @@ input[type="color"] {
         height: auto;
         border-width: 4px;
     }
+}
+
+.gallery-img {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    border: 2px solid var(--wood-dark);
+    border-radius: 5px;
 }
