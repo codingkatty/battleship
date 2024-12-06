@@ -64,18 +64,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
   generateIdenticon(colorInput.value, bgColorInput.value);
 
+  function generateUUID() {
+    return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
+      /[xy]/g,
+      function (c) {
+        const r = (Math.random() * 16) | 0,
+          v = c === "x" ? r : (r & 0x3) | 0x8;
+        return v.toString(16);
+      }
+    );
+  }
+
   document.getElementById("share").addEventListener("click", async () => {
     const dataUrl = canvas.toDataURL("image/png");
     const blob = await (await fetch(dataUrl)).blob();
     const formData = new FormData();
-    formData.append("file", blob, "identicon.png");
+
+    const uuid = generateUUID();
+    const filename = `identicon-${uuid}.png`;
+
+    formData.append("file", blob, filename);
 
     try {
-    const response = await axios.post("https://piratepicgen.onrender.com/upload", formData, {
-      headers: {
-        'Content-Type': 'image/png'
-      }
-    });
+      const response = await axios.post(
+        "https://piratepicgen.onrender.com/upload",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
       if (response.status === 200) {
         alert("Image shared to gallery!");
