@@ -71,11 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
     formData.append("file", blob, "identicon.png");
 
     try {
-        const response = await axios.post("https://piratepicgen.onrender.com/upload", formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        });
+        const response = await axios.post("https://piratepicgen.onrender.com/upload");
 
         if (response.status === 200) {
             alert("Image shared to gallery!");
