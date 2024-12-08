@@ -194,27 +194,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function handleDrawing(event) {
-        if (!drawing) return;
-
-        const rect = canvas.getBoundingClientRect();
-        const fullSize = currentSize + 2; // Account for border
-        const x = Math.floor((event.clientX - rect.left) / (canvas.width / fullSize));
-        const y = Math.floor((event.clientY - rect.top) / (canvas.height / fullSize));
-
-        if (x < 1 || x > currentSize || y < 1 || y > currentSize) return;
-
-        if (mode === 'draw') {
-            currentPattern[y - 1][x - 1] = true;
-            currentPattern[y - 1][currentSize - x] = true;
-        } else if (mode === 'erase') {
-            currentPattern[y - 1][x - 1] = false;
-            currentPattern[y - 1][currentSize - x] = false;
-        }
-
-        generateIdenticon(colorInput.value, bgColorInput.value, currentPattern);
-    }
-
     function generateUUID() {
         return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
             const r = (Math.random() * 16) | 0,
