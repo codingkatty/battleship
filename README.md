@@ -21,6 +21,9 @@ Here I write all updates made for this repository.
 ### Update 1 (6/12/2024)
 A function update, where I added a new page called 'Gallery'. It's connected to my Supabase bucket and whenever a user clicks on 'Share to Gallery', the image is uploaded and shown in the page for the world to see!
 
+### Update 2 (8/12/2024)
+An 'edit' page, with more sizes and a choice to download file as .piratemark, which is a json file and it can be loaded again to edit in the editor. It can be shared to library too.
+
 ## 💖 Examples
 There are over one million patterns that could be generated. Cool ones include: faces, skull, symbol, etc.
 
