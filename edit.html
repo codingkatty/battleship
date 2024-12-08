@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Identicon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=New+Rocker&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.8/axios.min.js" integrity="sha512-v8+bPcpk4Sj7CKB11+gK/FnsbgQ15jTwZamnBf/xDmiQDcgOIYufBo6Acu1y30vrk8gg5su4x0CG3zfPaq5Fcg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="https://codingkatty.github.io/profilepic">Home</a>
+        <a href="gallery">Gallery</a>
+        <a href="edit">Editor</a>
+    </nav>
+    <br>
+    <div class="container">
+        <h1>🖌️ Edit Identicon 🖌️</h1>
+        <div class="editor-wrapper">
+            <div class="editor-controls">
+                <div class="toolbar">
+                    <button id="draw" class="active" title="Draw">✏️</button>
+                    <button id="erase" title="Erase">🧹</button>
+                    <button id="size" title="Change Size">📏</button>
+                </div>
+                <canvas id="identicon" width="400" height="400"></canvas>
+            </div>
+            <div class="controls">
+                <div class="control-group colors">
+                    <div class="color-input">
+                        <label for="color">Ink:</label>
+                        <input type="color" id="color" name="color" value="#8B4513">
+                    </div>
+                    <div class="color-input">
+                        <label for="bgColor">Background:</label>
+                        <input type="color" id="bgColor" name="bgColor" value="#F5DEB3">
+                    </div>
+                </div>
+                <div class="control-group buttons">
+                    <button id="save">Save Mark</button>
+                    <button id="load">Load Mark</button>
+                    <button id="export">Export PNG</button>
+                    <button id="share">Share to Gallery</button>
+                </div>
+            </div>
+            <input type="file" id="fileInput" accept=".piratemark" style="display: none;">
+        </div>
+
+        <div id="sizeModal" class="modal">
+            <div class="modal-content">
+                <h2>Select Grid Size</h2>
+                <div class="size-options">
+                    <button data-size="5" class="active">5x5</button>
+                    <button data-size="6">6x6</button>
+                    <button data-size="7">7x7</button>
+                    <button data-size="8">8x8</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="edit.js"></script>
+</body>
+</html>
